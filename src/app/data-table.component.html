@@ -1,0 +1,45 @@
+
+<div style="height:100%;width:100%">
+  <div style="height:70%;overflow:scroll;">
+    <table #dataTable class="ui small celled table">
+      <thead>
+        <tr>
+          <th>
+            Remove
+          </th>
+          <th *ngFor="let key of attributesOfEntry">
+            {{key}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of dataForTable">
+          <td>
+            <button class="ui small red button" (click)="removeFromData(entry)">X</button>
+          </td>
+          <td *ngFor="let key of attributesOfEntry" [class.single]="key != 'Brand'" [class.line]="key != 'Brand'">
+            {{entry[key]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="overflow:scroll;">
+    <table #dataEntry class="ui small celled table">
+      <tbody>
+        <tr>
+          <th *ngFor="let key of attributesOfEntry">
+            {{key}}
+          </th>
+        </tr>
+        <tr>
+          <td *ngFor="let key of attributesOfEntry">
+            <input [(ngModel)]="dataEntryToAdd[key]" placeholder="" size="4">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="ui small green button" (click)="addNewEntryToData()">Add</button>
+  </div>
+</div>
+
